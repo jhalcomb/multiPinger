@@ -5,6 +5,11 @@ import subprocess
 import time
 import threading
 
+try: 
+    from ctypes import windll 
+    windll.shcore.SetProcessDpiAwareness(1) 
+except: 
+    pass 
 
 class Root(tk.Tk):
     def __init__(self):
@@ -18,6 +23,7 @@ class Root(tk.Tk):
         # Instantiate Initial Frames
         controlFrame = ControlFrame(self).grid(row=0, column=0)
         fGen = frameGeneratorFrame(self).grid(row=1, column=0)
+        ipframe1 = ipFrame(self).grid()
 
 
 class ControlFrame(ttk.Frame):
